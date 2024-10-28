@@ -9,4 +9,21 @@ header{
     justify-content:space-around;
     margin-top:20px;
 }
-
+.sutuation-tache{
+    display:flex;
+    justify-content:center;
+    justify-content:space-around;
+    margin-top:100px;
+}
+.To-do{
+    border-bottom:5px red solid;
+    width:100px;
+}
+.In-progress{
+    border-bottom:5px yellow solid;
+    width:100px;
+}
+.Done{
+    border-bottom:5px green solid;
+    width:100px;
+}
