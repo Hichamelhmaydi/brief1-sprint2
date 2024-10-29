@@ -21,18 +21,133 @@
                   class="bg-blue-600 hover:bg-blue-700 transition-all text-white text-sm rounded-full px-5 py-2.5">Search</button>
               </div>
         </div>
-        
         <div class="Add2">
             <button class="px-4 py-2 font-bold text-white bg-blue-500 border-b-4 border-blue-700 rounded hover:bg-blue-400 hover:border-blue-500">
                 Add Miltiple +
               </button>
         </div>
     </header>
+    <pre>Trier par</pre>
+   <div class="filter">
+    <div class="mb-4" id="date">
+        <label class="block mb-2 text-sm font-medium text-gray-700">Date d'échéance</label>
+        <input type="date" id="dateFilter"
+            class="w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500">
+    </div>
+    <form class="max-w-sm mx-auto" id="priorité">
+        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">la priorité </label>
+        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected>la priorité </option>
+        <option value="P1">P1</option>
+        <option value="P2">P2</option>
+        <option value="P3">P3</option>
+        </select>
+    </form>
+   </div>
     <main>
         <div class="sutuation-tache">
-        <p class="To-do">To do</p>
-        <p class="In-progress">In progress</p>
-        <p class="Done">Done</p>
+            <div class="max-w-screen-xl p-16 mx-auto">
+                <div class="gap-10 sm:grid lg:grid-cols-3 sm:grid-cols-2">
+                    <div
+                        class="max-w-sm overflow-hidden transition duration-300 rounded shadow-lg hover:bg-gray-900 hover:text-white">
+                        <div class="px-8 py-4">
+                            <!-- to do general -->
+                            <div class="to-do-carde">
+                                <p class="To-do">To do</p>
+                                <div class="tache1">
+                                    <a class="relative block max-w-sm p-6 mx-auto mt-24 bg-gray-900 border border-gray-100 rounded-lg" href="#">
+                                        <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+                                        <div class="my-4">
+                                            <p class="py-1 text-gray-300">Brief soutenances croisées</p>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Delete</button>
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Edit</button>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tache1">
+                                    <a class="relative block max-w-sm p-6 mx-auto mt-24 bg-gray-900 border border-gray-100 rounded-lg" href="#">
+                                        <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+                                        <div class="my-4">
+                                            <p class="py-1 text-gray-300">Brief soutenances croisées</p>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Delete</button>
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Edit</button>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- fin to do general -->
+                    </div>
+                    <div class="max-w-sm overflow-hidden transition duration-300 rounded shadow-lg hover:bg-gray-900 hover:text-white">
+                        <div class="px-8 py-4">
+                            <div class="In-progress-carde">
+                                <!-- in progress general -->
+                                <p class="In-progress">In progress</p>
+                                <div class="tache1">
+                                    <a class="relative block max-w-sm p-6 mx-auto mt-24 bg-gray-900 border border-gray-100 rounded-lg" href="#">
+                                        <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+                                        <div class="my-4">
+                                            <p class="py-1 text-gray-300">Brief soutenances croisées</p>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Delete</button>
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Edit</button>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                             <!-- fin in progress general -->
+                        </div>
+                    </div>
+                    <div class="max-w-sm overflow-hidden transition duration-300 rounded shadow-lg hover:bg-gray-900 hover:text-white">
+                        <div class="px-8 py-4">
+                             <!-- done general -->
+                            <div class="Done-carde">
+                                <p class="Done">Done</p>
+                                <div class="tache1">
+                                    <a class="relative block max-w-sm p-6 mx-auto mt-24 bg-gray-900 border border-gray-100 rounded-lg" href="#">
+                                        <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+                                        <div class="my-4">
+                                            <p class="py-1 text-gray-300">Brief soutenances croisées</p>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Delete</button>
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Edit</button>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tache1">
+                                    <a class="relative block max-w-sm p-6 mx-auto mt-24 bg-gray-900 border border-gray-100 rounded-lg" href="#">
+                                        <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+                                        <div class="my-4">
+                                            <p class="py-1 text-gray-300">Brief soutenances croisées</p>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Delete</button>
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Edit</button>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tache1">
+                                    <a class="relative block max-w-sm p-6 mx-auto mt-24 bg-gray-900 border border-gray-100 rounded-lg" href="#">
+                                        <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+                                        <div class="my-4">
+                                            <p class="py-1 text-gray-300">Brief soutenances croisées</p>
+                                        </div>
+                                        <div class="flex justify-end" >
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Delete</button>
+                                            <button class="px-2 py-1 font-semibold text-white border border-gray-200 rounded hover:bg-gray-800" id="button-sup-edit">Edit</button>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                             <!-- fin done general -->
+                        </div>
+                    </div>
         </div>
     </main>
 </body>

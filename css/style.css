@@ -9,11 +9,14 @@ header{
     justify-content:space-around;
     margin-top:20px;
 }
+pre{
+    font-size:30px;
+    margin:79px 0 0 520px ;
+}
 .sutuation-tache{
     display:flex;
     justify-content:center;
     justify-content:space-around;
-    margin-top:100px;
 }
 .To-do{
     border-bottom:5px red solid;
@@ -26,4 +29,13 @@ header{
 .Done{
     border-bottom:5px green solid;
     width:100px;
+}
+
+.filter{
+display:flex;
+justify-content:space-evenly;
+margin-left:290px;
+}
+#button-sup-edit{
+    margin:10px;
 }
