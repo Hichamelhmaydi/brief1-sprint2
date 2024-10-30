@@ -39,3 +39,6 @@ margin-left:290px;
 #button-sup-edit{
     margin:10px;
 }
+.task{
+    visibility:hidden;
+}
