@@ -13,5 +13,8 @@ En général je créé un simple interface :
 5- après lancer la tâche , elle affiche par tois boutton premiere boutton pour supprertion la tâche et le deuxième pour change état de tâche et le dernier boutton pour change la priorité de tâche
 
 
+et je utilise html et javascript et tailwind pour créa ce site 
+
+
 
 
