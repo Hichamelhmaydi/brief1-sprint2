@@ -94,6 +94,7 @@ function changeTaskStatus(taskElement) {
     updateTaskCounts();
 }
 
+
 function changeTaskPriority(taskElement, newPriority) {
     const titleElement = taskElement.querySelector('.task-title');
     titleElement.style.color = getPriorityColor(newPriority);
