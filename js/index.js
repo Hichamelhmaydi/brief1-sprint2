@@ -73,11 +73,9 @@ function changeTaskStatus(taskElement) {
     } else {
         currentStatus = 'To do';
     }
-
     statusElement.textContent = currentStatus;
     document.getElementById(currentStatus.toLowerCase()).appendChild(taskElement);
 }
-
 function changeTaskPriority(taskElement, newPriority) {
     const titleElement = taskElement.querySelector('.task-title');
     titleElement.style.color = getPriorityColor(newPriority);
@@ -85,7 +83,6 @@ function changeTaskPriority(taskElement, newPriority) {
     const priorityElement = taskElement.querySelector('.task-priority');
     priorityElement.textContent = `Priorité: ${newPriority}`;
 }
-
 function getPriorityColor(priority) {
     switch (priority) {
         case 'P1':
