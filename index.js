@@ -25,28 +25,23 @@ function addTask(event) {
     const status = document.getElementById('status').value;
     const priority = document.getElementById('priority').value;
 
-    // تحديد لون العنوان بناءً على الأولوية
-    let priorityColor;
-    if (priority === 'P1') {
-        priorityColor = 'text-red-500'; // أحمر
-    } else if (priority === 'P2') {
-        priorityColor = 'text-yellow-500'; // أصفر
-    } else if (priority === 'P3') {
-        priorityColor = 'text-green-500'; // أخضر
-    }
-
-
+    let priorityColor = getPriorityColor(priority);
 
     const newTask = document.createElement('div');
     newTask.classList.add('task', status.toLowerCase()); 
     newTask.innerHTML = `
       <div>
-        <div class="font-bold ${priorityColor}">${title}</div>
+        <div class="font-bold task-title" style="color: ${priorityColor};">${title}</div>
         <textarea class="w-full p-2 rounded" disabled>${description}</textarea>
         <div class="task-status">${status}</div>
         <div class="task-priority">Priorité: ${priority}</div>
         <button class="delete-button bg-red-500 text-white rounded px-2 py-1">Supprimer</button>
         <button class="change-status-button bg-yellow-500 text-white rounded px-2 py-1">Changer l'état</button>
+        <select class="priority-select bg-gray-200 text-black rounded px-2 py-1">
+            <option value="P1" ${priority === 'P1' ? 'selected' : ''}>P1</option>
+            <option value="P2" ${priority === 'P2' ? 'selected' : ''}>P2</option>
+            <option value="P3" ${priority === 'P3' ? 'selected' : ''}>P3</option>
+        </select>
       </div>
     `;
 
@@ -54,12 +49,17 @@ function addTask(event) {
     taskForm.reset();
     closeModal();
 
+    
     newTask.querySelector('.delete-button').addEventListener('click', function() {
         newTask.remove();
     });
 
     newTask.querySelector('.change-status-button').addEventListener('click', function() {
         changeTaskStatus(newTask);
+    });
+
+    newTask.querySelector('.priority-select').addEventListener('change', function(event) {
+        changeTaskPriority(newTask, event.target.value);
     });
 }
 
@@ -76,7 +76,26 @@ function changeTaskStatus(taskElement) {
     }
 
     statusElement.textContent = currentStatus;
-
-    // نقل المهمة للقسم الجديد
     document.getElementById(currentStatus.toLowerCase()).appendChild(taskElement);
+}
+
+function changeTaskPriority(taskElement, newPriority) {
+    const titleElement = taskElement.querySelector('.task-title');
+    titleElement.style.color = getPriorityColor(newPriority);
+
+    const priorityElement = taskElement.querySelector('.task-priority');
+    priorityElement.textContent = `Priorité: ${newPriority}`;
+}
+
+function getPriorityColor(priority) {
+    switch (priority) {
+        case 'P1':
+            return 'red'; 
+        case 'P2':
+            return 'orange'; 
+        case 'P3':
+            return 'green'; 
+        default:
+            return 'black';
+    }
 }
