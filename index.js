@@ -37,7 +37,7 @@ function addTask(event) {
         <div class="task-priority">Priorité: ${priority}</div>
         <button class="delete-button bg-red-500 text-white rounded px-2 py-1">Supprimer</button>
         <button class="change-status-button bg-yellow-500 text-white rounded px-2 py-1">Changer l'état</button>
-        <select class="priority-select bg-gray-200 text-black rounded px-2 py-1">
+        <select class="priority-select bg-gray-200 text-black rounded px-2 py-1 mt-1">
             <option value="P1" ${priority === 'P1' ? 'selected' : ''}>P1</option>
             <option value="P2" ${priority === 'P2' ? 'selected' : ''}>P2</option>
             <option value="P3" ${priority === 'P3' ? 'selected' : ''}>P3</option>
@@ -49,7 +49,7 @@ function addTask(event) {
     taskForm.reset();
     closeModal();
 
-    
+    // إضافة الأحداث لأزرار الحذف وتغيير الحالة وتغيير الأولوية
     newTask.querySelector('.delete-button').addEventListener('click', function() {
         newTask.remove();
     });
