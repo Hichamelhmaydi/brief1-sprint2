@@ -1,32 +1,18 @@
-.task-container {
-    display: flex;
-    flex-direction: column;
-}
+
+ body {
+   background-image:url(/assets/background.jpg);
+   background-size:cover;
+ }
 
 .task {
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
- 
-}
-
-header{
-    display:flex;
-    justify-content:center;
-    justify-content:space-around;
-    margin-top:5em;
-}
-main{
-    display:flex;
-    justify-content:center;
-    justify-content:space-around;
-    margin-top:7em;
-}
-#todo{
-    background-color:rgba(10, 10, 86, 0.597);
-    width:20em;
-    height:100%;
-    border-radius:20px;
+    background-color:rgba(155, 253, 255, 0.725);
+    color: black;
+    border:0 ;
+    border-left:5px solid black;
+    border-bottom:5px solid black;
 }
 

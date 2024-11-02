@@ -4,74 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
-    <link rel="stylesheet" href="/src/output.css">
-    <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-gradient-to-r from-blue-300 to-indigo-600">
-    <header>
-        <button id="add" class="block text-white bg-blue-700 hover:bg-blue-800">Ajouter une tâche</button>
-        <div class="search">
-            <div class="bg-white flex px-1 py-1 rounded-full border border-blue-500 overflow-hidden max-w-md mx-auto font-[sans-serif]">
-                <input type='search' placeholder='Search Something...' class="w-full pl-4 text-sm bg-white outline-none" />
-                <button type='button'
-                  class="bg-blue-600 hover:bg-blue-700 transition-all text-white text-sm rounded-full px-5 py-2.5">Search</button>
-              </div>
+<body >
+    <header class="flex flex-col items-center gap-4 p-4 sm:flex-row sm:justify-between">
+        <button id="add" class="w-48 p-2 text-sm text-white bg-blue-900 rounded-lg hover:bg-blue-800">Ajouter une tâche</button>
+        
+        <div class="w-full search sm:max-w-md">
+            <div class="flex px-3 py-1 overflow-hidden bg-white border border-blue-500 rounded-full">
+                <input type="search" placeholder="Rechercher..." class="w-full pl-4 text-sm bg-white outline-none" />
+                <button type="button" class="bg-blue-600 hover:bg-blue-700 transition text-white text-sm rounded-full px-5 py-2.5">Search</button>
+            </div>
         </div>
-        <div class="Add2">
-            <button class="px-4 py-2 font-bold text-white bg-blue-500 border-b-4 border-blue-700 rounded hover:bg-blue-400 hover:border-blue-500">
-                Add Miltiple +
-              </button>
-        </div>
-        <div id="crud-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full h-full overflow-y-auto">
-            <div class="relative w-full max-w-md p-4">
-                <div class="bg-white rounded-lg shadow">
-                    <div class="flex items-center justify-between p-4 border-b">
-                        <h3 class="text-lg font-semibold">Nouvelle tâche</h3>
-                        <button type="button" id="close" class="text-gray-400 hover:text-gray-900">&times;</button>
-                        
-                    </div>
-                    <form id="task-form" class="p-4">
+        
+        <button class="w-48 p-2 text-sm text-white bg-blue-900 rounded-lg hover:bg-blue-800" id="multi">Add Multiple +</button>
+    </header>
+
+    <div id="crud-modal" tabindex="-1" class="fixed inset-0 z-50 flex items-center justify-center hidden w-full h-full bg-gray-800 bg-opacity-50">
+        <div class="relative w-full max-w-md p-4">
+            <div class="text-white bg-blue-600 rounded-lg shadow-lg">
+                <div class="flex items-center justify-between p-4 border-b border-blue-500">
+                    <h3 class="text-lg font-semibold">Nouvelle tâche</h3>
+                    <button type="button" id="close" class="text-gray-400 hover:text-gray-900">&times;</button>
+                </div>
+                
+                <form id="task-form" class="p-4 space-y-4">
+                    <div>
                         <label for="name" class="block mb-2">Titre de tâche</label>
-                        <input type="text" id="name" class="w-full p-2 border rounded" required maxlength="25">
-                        
+                        <input type="text" id="name" class="w-full p-2 text-white bg-purple-900 rounded outline-none" required maxlength="25">
+                    </div>
+                    
+                    <div>
                         <label for="description" class="block mb-2">Description de tâche</label>
-                        <textarea id="description" class="w-full p-2 border rounded" required></textarea>
-                        
+                        <textarea id="description" class="w-full p-2 text-white bg-purple-900 rounded outline-none" required></textarea>
+                    </div>
+                    
+                    <div>
                         <label for="status" class="block mb-2">Statut</label>
-                        <select id="status" class="w-full p-2 border rounded">
+                        <select id="status" class="w-full p-2 text-white bg-purple-900 rounded outline-none">
                             <option value="Todo">Todo</option>
                             <option value="Doing">Doing</option>
                             <option value="Done">Done</option>
                         </select>
-                        
+                    </div>
+                    
+                    <div>
                         <label for="priority" class="block mb-2">Priorité</label>
-                        <select id="priority" class="w-full p-2 border rounded">
+                        <select id="priority" class="w-full p-2 text-white bg-purple-900 rounded outline-none">
                             <option value="P1">P1</option>
                             <option value="P2">P2</option>
                             <option value="P3">P3</option>
                         </select>
+                    </div>
+
+                    <div>
                         <label for="date" class="block mb-2">Date</label>
-                        <input type="date" id="date" class="w-full p-2 border rounded">
-                        
-                        <button type="submit" class="p-2 text-white bg-blue-700 rounded">Ajouter</button>
-                        <button type="button" id="close" class="p-2 text-white bg-gray-500 rounded">Annuler</button>
-                    </form>
-                </div>
+                        <input type="date" id="date" class="w-full text-white bg-purple-900 rounded outline-none">
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button type="submit" class="w-full p-2 text-white bg-blue-900 rounded hover:bg-blue-800">Ajouter</button>
+                        <button type="button" id="close" class="w-full p-2 text-white bg-gray-500 rounded hover:bg-gray-600">Annuler</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <div id="todo" class="task-list">
-          <center><h2>To Do</h2></center>  
+    <main class="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3">
+        <div id="todo" class="p-4 text-white bg-blue-800 rounded-lg shadow task-list">
+            <h2 class="text-lg font-semibold text-center">To Do</h2>
+            <!-- Liste des tâches "To Do" ici -->
         </div>
-        <div id="doing" class="task-list">
-            <h2>Doing</h2>
+        
+        <div id="doing" class="p-4 text-white bg-blue-800 rounded-lg shadow task-list">
+            <h2 class="text-lg font-semibold text-center">Doing</h2>
+            <!-- Liste des tâches "Doing" ici -->
         </div>
-        <div id="done" class="task-list">
-            <h2>Done</h2>
+        
+        <div id="done" class="p-4 text-white bg-blue-800 rounded-lg shadow task-list">
+            <h2 class="text-lg font-semibold text-center">Done</h2>
+            <!-- Liste des tâches "Done" ici -->
         </div>
     </main>
 
