@@ -4,6 +4,7 @@ let closeButton = crudModal.querySelector('#close');
 let taskForm = document.getElementById('task-form');
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadTasks();
     addButton.addEventListener('click', showModal);
     closeButton.addEventListener('click', closeModal);
     taskForm.addEventListener('submit', addTask);
@@ -25,10 +26,19 @@ function addTask(event) {
     const status = document.getElementById('status').value;
     const priority = document.getElementById('priority').value;
 
-    let priorityColor = getPriorityColor(priority);
+    const taskData = { title, description, status, priority };
+    addTaskToDOM(taskData);
+    saveTasks();
 
+    taskForm.reset();
+    closeModal();
+}
+
+function addTaskToDOM(taskData) {
+    const { title, description, status, priority } = taskData;
     const newTask = document.createElement('div');
     newTask.classList.add('task', status.toLowerCase()); 
+    let priorityColor = getPriorityColor(priority);
     newTask.innerHTML = `
       <div>
         <div class="font-bold task-title" style="color: ${priorityColor};">${title}</div>
@@ -46,19 +56,23 @@ function addTask(event) {
     `;
 
     document.getElementById(status.toLowerCase()).appendChild(newTask);
-    taskForm.reset();
-    closeModal();
+    attachTaskEventHandlers(newTask);
+    updateTaskCounts();
+}
 
-    newTask.querySelector('.delete-button').addEventListener('click', function() {
-        newTask.remove();
+function attachTaskEventHandlers(taskElement) {
+    taskElement.querySelector('.delete-button').addEventListener('click', function() {
+        taskElement.remove();
+        saveTasks();
+        updateTaskCounts();
     });
 
-    newTask.querySelector('.change-status-button').addEventListener('click', function() {
-        changeTaskStatus(newTask);
+    taskElement.querySelector('.change-status-button').addEventListener('click', function() {
+        changeTaskStatus(taskElement);
     });
 
-    newTask.querySelector('.priority-select').addEventListener('change', function(event) {
-        changeTaskPriority(newTask, event.target.value);
+    taskElement.querySelector('.priority-select').addEventListener('change', function(event) {
+        changeTaskPriority(taskElement, event.target.value);
     });
 }
 
@@ -73,16 +87,22 @@ function changeTaskStatus(taskElement) {
     } else {
         currentStatus = 'To do';
     }
+
     statusElement.textContent = currentStatus;
     document.getElementById(currentStatus.toLowerCase()).appendChild(taskElement);
+    saveTasks();
+    updateTaskCounts();
 }
+
 function changeTaskPriority(taskElement, newPriority) {
     const titleElement = taskElement.querySelector('.task-title');
     titleElement.style.color = getPriorityColor(newPriority);
 
     const priorityElement = taskElement.querySelector('.task-priority');
     priorityElement.textContent = `Priorité: ${newPriority}`;
+    saveTasks();
 }
+
 function getPriorityColor(priority) {
     switch (priority) {
         case 'P1':
@@ -94,4 +114,30 @@ function getPriorityColor(priority) {
         default:
             return 'black';
     }
+}
+
+function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll('.task').forEach(taskElement => {
+        const title = taskElement.querySelector('.task-title').textContent;
+        const description = taskElement.querySelector('textarea').value;
+        const status = taskElement.querySelector('.task-status').textContent;
+        const priority = taskElement.querySelector('.task-priority').textContent.split(': ')[1];
+        tasks.push({ title, description, status, priority });
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.forEach(task => {
+        addTaskToDOM(task);
+    });
+    updateTaskCounts();
+}
+
+function updateTaskCounts() {
+    document.getElementById('todo-count').textContent = document.querySelectorAll('#todo .task').length;
+    document.getElementById('doing-count').textContent = document.querySelectorAll('#doing .task').length;
+    document.getElementById('done-count').textContent = document.querySelectorAll('#done .task').length;
 }

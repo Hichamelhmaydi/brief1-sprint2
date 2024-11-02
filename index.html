@@ -6,9 +6,12 @@
     <title>To Do List</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+
 </head>
-<body >
+<body>
+    <center> <p>Gestion des tâches</p></center>
     <header class="flex flex-col items-center gap-4 p-4 sm:flex-row sm:justify-between">
+     
         <button id="add" class="w-48 p-2 text-sm text-white bg-blue-900 rounded-lg hover:bg-blue-800">Ajouter une tâche</button>
         
         <div class="w-full search sm:max-w-md">
@@ -74,18 +77,15 @@
 
     <main class="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3">
         <div id="todo" class="p-4 text-white bg-blue-800 rounded-lg shadow task-list">
-            <h2 class="text-lg font-semibold text-center">To Do</h2>
-            <!-- Liste des tâches "To Do" ici -->
+            <h2 class="text-lg font-semibold text-center">To Do <span class="task-count" id="todo-count">0</span></h2>
         </div>
         
         <div id="doing" class="p-4 text-white bg-blue-800 rounded-lg shadow task-list">
-            <h2 class="text-lg font-semibold text-center">Doing</h2>
-            <!-- Liste des tâches "Doing" ici -->
+            <h2 class="text-lg font-semibold text-center">Doing <span class="task-count" id="doing-count">0</span></h2>
         </div>
         
         <div id="done" class="p-4 text-white bg-blue-800 rounded-lg shadow task-list">
-            <h2 class="text-lg font-semibold text-center">Done</h2>
-            <!-- Liste des tâches "Done" ici -->
+            <h2 class="text-lg font-semibold text-center">Done <span class="task-count" id="done-count">0</span></h2>
         </div>
     </main>
 
